@@ -34,7 +34,7 @@ jobs:
       env:
         DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
       run: |
-        docker push $DOCKER_IMAGE .
+        docker push $DOCKER_IMAGE
       
         
       
