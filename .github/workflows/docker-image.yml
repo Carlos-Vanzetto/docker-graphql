@@ -25,6 +25,18 @@ jobs:
         echo "Iniciando login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "Fin del login"
+    - name: Docker Build
+      env:
+        DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
+      run: |
+        docker build --platform linux/amd64,linux/arm64 --tag $DOCKER_IMAGE .
+    - name: Docker push
+      env:
+          DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
+      run: |
+        docker push $DOCKER_IMAGE .
+      
+        
       
       
       
